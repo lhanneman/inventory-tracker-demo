@@ -1,0 +1,40 @@
+﻿@model AuctioneerDemo.Entities.Equipment
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this piece of equipment?</h3>
+<div class="row">
+    @using (Html.BeginForm("DeleteConfirm", "Equipment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.EquipmentId)
+        <table class="table table-striped">
+            <tr>
+                <th>Year</th>
+                <td>@Model.Year</td>
+            </tr>
+            <tr>
+                <th>Make</th>
+                <td>@Model.Make</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>@Model.Model</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @Html.ActionLink("Cancel", "Index", "Home", new { }, new { @class = "btn btn-default" })
+                    <input type="submit" class="btn btn-default" value="Delete" />
+                </td>
+            </tr>
+
+        </table>
+    }
+
+</div>

@@ -1,0 +1,38 @@
+﻿@model AuctioneerDemo.Entities.Equipment
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @using (Html.BeginForm("AddOrUpdate", "Equipment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.EquipmentId)
+        <table class="table table-striped">
+            <tr>
+                <th>Year</th>
+                <td>@Html.TextBoxFor(m => m.Year, new { @class = "form-control", autofocus = "autofocus" })</td>
+            </tr>
+            <tr>
+                <th>Make</th>
+                <td>@Html.TextBoxFor(m => m.Make, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>@Html.TextBoxFor(m => m.Model, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>@Html.TextAreaFor(m => m.Description, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="btn btn-default" value="Save Changes" />
+                </td>
+            </tr>
+
+        </table>
+    }
+
+    </div>

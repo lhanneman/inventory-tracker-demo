@@ -1,0 +1,32 @@
+﻿@model AuctioneerDemo.Models.EquipmentViewModel
+
+<div class="row">
+   <table class="table table-striped">
+       <thead>
+           <tr>
+               <th>Year</th>
+               <th>Make</th>
+               <th>Model</th>
+               <th>Description</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach (var equipment in Model.Equipment)
+           {
+            <tr>
+                <td>@equipment.Year</td>
+                <td>@equipment.Make</td>
+                <td>@equipment.Model</td>
+                <td>@equipment.Description</td>
+                <td>@Html.ActionLink("Edit", "Index", "Equipment", new { id = equipment.EquipmentId }, null)</td>
+                <td>@Html.ActionLink("Delete", "Delete", "Equipment", new { id = equipment.EquipmentId }, null)</td>
+            </tr>
+           }
+           <tr>
+               <td colspan="6">
+                   @Html.ActionLink("Add Equipment", "Index", "Equipment", new { id = 0 }, new { @class = "btn btn-default" })
+               </td>
+           </tr>
+       </tbody>
+   </table>
+</div>
